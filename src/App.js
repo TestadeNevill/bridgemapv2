@@ -10,6 +10,8 @@ import { formatRelative } from "date-fns";
 
 import "@reach/combobox/styles.css";
 
+import mapStyles from "./mapStyles.js";
+
 const libraries = ["places"];
 const mapContainerStyle = {
   height: "100vh",
@@ -18,6 +20,11 @@ const mapContainerStyle = {
 const center = {
   lat: 41.179192,
   lng: -73.189484
+};
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true,
 };
 
 const APIKEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
@@ -38,6 +45,7 @@ export default function App() {
         mapContainerStyle={mapContainerStyle}
         center={center}
         zoom={12}
+        options={options}
       ></GoogleMap>
     </div>
   );
