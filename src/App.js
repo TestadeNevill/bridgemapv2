@@ -11,18 +11,35 @@ import { formatRelative } from "date-fns";
 import "@reach/combobox/styles.css";
 
 const libraries = ["places"];
+const mapContainerStyle = {
+  height: "100vh",
+  width: "100vw",
+};
+const center = {
+  lat: 41.179192,
+  lng: -73.189484
+};
+
+const APIKEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY
 
 export default function App() {
+
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    googleMapsApiKey: APIKEY,
     libraries,
   });
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-  return <div>
-    map
+  return (
+    <div>
+      <GoogleMap
+        mapContainerStyle={mapContainerStyle}
+        center={center}
+        zoom={12}
+      ></GoogleMap>
     </div>
+  );
 
 }
