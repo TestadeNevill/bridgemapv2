@@ -2,7 +2,10 @@
 
 Live Demo: https://bridgemapv2.herokuapp.com/
 
+![tdnbridgemap](https://user-images.githubusercontent.com/64296826/105125313-1c429d80-5aaa-11eb-942b-a2b8e89438b7.PNG)
+
 Live Demo: https://bridgemapv2.herokuapp.com/
+
 ## Description
 
 As someone who is interested in spatial information I wanted my first project after my bootcamp to be based on maps. This project uses React, Weather and Google APIs. This project will be use to check local weather and forecast, search local places and locations and in the future it will provide spatial data in layers such as a geographic information system (GIS).
