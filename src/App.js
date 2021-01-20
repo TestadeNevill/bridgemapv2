@@ -36,17 +36,37 @@ export default function App() {
     libraries,
   });
 
+  const [markers, setMarkers] = React.useState([]);
+
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
   return (
     <div>
+      <h1>
+        tDN's BridgeMap {''}<span role="img" aria-label="crown">🗺️</span></h1>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         center={center}
         zoom={12}
         options={options}
-      ></GoogleMap>
+        onClick={(event) => {
+          setMarkers(current => [
+            ...current,
+            {
+              lat: event.latLng.lat(),
+              lng: event.latLng.lng(),
+              time: new Date(),
+            },
+          ]);
+        }}
+      >
+        {markers.map((marker) => (
+          <Marker
+            key={marker.time.toISOString()}
+            position={{ lat: marker.lat, lng: marker.lng }} />
+        ))}
+      </GoogleMap>
     </div>
   );
 
